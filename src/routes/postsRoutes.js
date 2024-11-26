@@ -10,6 +10,10 @@ const corsOptions = {
     optionsSuccessStatus: 200
 }
 
+const multer = require('multer');
+const upload = multer({ dest: 'uploads/' });
+
+
 /*const storage = multer.diskStorage({ // Define a lógica de armazenamento para arquivos enviados
   destination: function (req, file, cb) { // Função para definir o diretório de destino
     cb(null, 'uploads/'); // Define o diretório "uploads" para armazenar os arquivos
@@ -20,10 +24,10 @@ const corsOptions = {
 })
 
 // Cria uma instância do middleware Multer com a configuração de armazenamento
-const upload = multer({ dest: "./uploads", storage }); */
+const upload = multer({ dest: "./uploads", storage });*/
 
 // Comentário alternativo para servidores com arquitetura Unix (onde ./uploads funciona)
-const upload = multer({ dest: "./uploads"})
+// const upload = multer({ dest: "./uploads"})
 
 const routes = (app) => { // Função que define as rotas da aplicação
   // Habilita o middleware express.json para interpretar requisições no formato JSON
