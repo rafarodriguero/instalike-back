@@ -36,10 +36,11 @@ export async function uploadImagem(req, res) {
     imgUrl: req.file.originalname,
     alt: ""
   };
-  console.log("")
+  console.log("novo Post " + novoPost);
   try {
     // Chama a função do modelo para criar um novo post no banco de dados
     const postCriado = await criarPost(novoPost);
+    console.log("post Criado " + postCriado);
     // Gera um novo nome para a imagem, incluindo o ID do post
     const imagemAtualizada = `uploads/${postCriado.insertedId}.png`;
     console.log("variavel imagemAtualizada " + imagemAtualizada);
@@ -47,8 +48,7 @@ export async function uploadImagem(req, res) {
     fs.renameSync(req.file.path, imagemAtualizada);
     console.log("req.file.path " + req.file.path);
     // Envia o post criado como resposta JSON com status 200 (OK)
-    res.status(200).json(postCriado);
-    console.log("Json PostCriado " + json(postCriado));
+    res.status(201).json(postCriado);
   } catch (erro) {
     // Imprime o erro no console para depuração
     console.error(erro.message);

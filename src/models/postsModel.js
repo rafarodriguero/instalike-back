@@ -21,8 +21,10 @@ export async function criarPost (novoPost) {
 }
 
 export async function atualizarPost (id, novoPost) {
+    console.log("Função Atualizar Post");
     const db = conexao.db("imersao-instabytes");
     const colecao = db.collection("posts");
     const objID = ObjectId.createFromHexString(id);
+    console.log(objID);
     return colecao.updateOne({_id: new ObjectId(objID)}, {$set:novoPost});
 }
